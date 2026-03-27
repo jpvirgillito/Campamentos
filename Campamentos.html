@@ -2,185 +2,122 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mapa de Campamentos</title>
+
+    <!-- Estilos -->
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+        .leaflet-container {
+            font-size: 1rem;
+        }
+    </style>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
 </head>
 <body>
+    <div id="map"></div>
 
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
 
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_c9733e0eae7da2a778369d8d51087285 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
+    <script>
+        // Configuración inicial del mapa
+        const map = L.map('map').setView([-35.64666666666667, -69.90944444444445], 8);
 
-</head>
-<body>
+        // Capa base de OpenStreetMap
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19,
+            minZoom: 0
+        }).addTo(map);
 
+        // ============================================
+        // Punto 1: Río Diamante
+        // ============================================
+        const markerRioDiamante = L.marker([-34.638, -69.181]).addTo(map);
 
-            <div class="folium-map" id="map_c9733e0eae7da2a778369d8d51087285" ></div>
+        markerRioDiamante.bindPopup(`
+            <div style="width: 100%; height: 100%;">
+                <strong>Río Diamante</strong>
+            </div>
+        `);
 
+        markerRioDiamante.bindTooltip(`
+            <div>
+                Río Diamante
+            </div>
+        `, { sticky: true });
+
+        // ============================================
+        // Punto 2: El Sosneado
+        // ============================================
+        const markerElSosneado = L.marker([-35.083, -69.603]).addTo(map);
+
+        markerElSosneado.bindPopup(`
+            <div style="width: 100%; height: 100%;">
+                <strong>El Sosneado</strong>
+            </div>
+        `);
+
+        markerElSosneado.bindTooltip(`
+            <div>
+                El Sosneado
+            </div>
+        `, { sticky: true });
+
+        // ============================================
+        // Punto 3: Río Malargüe
+        // ============================================
+        const markerRioMalargue1 = L.marker([-35.544, -69.594]).addTo(map);
+
+        markerRioMalargue1.bindPopup(`
+            <div style="width: 100%; height: 100%;">
+                <strong>Río Malargüe</strong>
+            </div>
+        `);
+
+        markerRioMalargue1.bindTooltip(`
+            <div>
+                Río Malargüe
+            </div>
+        `, { sticky: true });
+
+        // ============================================
+        // Punto 4: Bardas Blancas
+        // ============================================
+        const markerRioMalargue2 = L.marker([-35.860, -69.807]).addTo(map);
+
+        markerRioMalargue2.bindPopup(`
+            <div style="width: 100%; height: 100%;">
+                <strong>Bardas Blancas</strong>
+            </div>
+        `);
+
+        markerRioMalargue2.bindTooltip(`
+            <div>
+                Bardas Blancas
+            </div>
+        `, { sticky: true });
+    </script>
 </body>
-<script>
-
-
-            var map_c9733e0eae7da2a778369d8d51087285 = L.map(
-                "map_c9733e0eae7da2a778369d8d51087285",
-                {
-                    center: [-35.74666666666667, -71.90944444444445],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 4,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-
-
-
-            var tile_layer_4d1fe1b163378165156c2be513911d26 = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            );
-
-
-            tile_layer_4d1fe1b163378165156c2be513911d26.addTo(map_c9733e0eae7da2a778369d8d51087285);
-
-
-            var marker_0d62d8c0c3c703d69bfea353ed8b4a09 = L.marker(
-                [-34.634, -69.184],
-                {}
-            ).addTo(map_c9733e0eae7da2a778369d8d51087285);
-
-
-        var popup_a2b234ef67ebf3c11eab3532ee2c172c = L.popup({"maxWidth": "100%"});
-
-
-
-                var html_16cb3e1e5710aca4620a9b7523071c68 = $(`<div id="html_16cb3e1e5710aca4620a9b7523071c68" style="width: 100.0%; height: 100.0%;">Río Diamante</div>`)[0];
-                popup_a2b234ef67ebf3c11eab3532ee2c172c.setContent(html_16cb3e1e5710aca4620a9b7523071c68);
-
-
-
-        marker_0d62d8c0c3c703d69bfea353ed8b4a09.bindPopup(popup_a2b234ef67ebf3c11eab3532ee2c172c)
-        ;
-
-
-
-
-            marker_0d62d8c0c3c703d69bfea353ed8b4a09.bindTooltip(
-                `<div>
-                     Río Diamante
-                 </div>`,
-                {"sticky": true}
-            );
-
-
-            var marker_bab11c29b573fb3a6350d94bad38648c = L.marker(
-                [-35.083, -69.603],
-                {}
-            ).addTo(map_c9733e0eae7da2a778369d8d51087285);
-
-
-        var popup_dcb06fd8c277ca82585b144176e7ea7c = L.popup({"maxWidth": "100%"});
-
-
-
-                var html_d5e68ba61f5bbd5434f2bbe740ee1b21 = $(`<div id="html_d5e68ba61f5bbd5434f2bbe740ee1b21" style="width: 100.0%; height: 100.0%;">El Sosneado</div>`)[0];
-                popup_dcb06fd8c277ca82585b144176e7ea7c.setContent(html_d5e68ba61f5bbd5434f2bbe740ee1b21);
-
-
-
-        marker_bab11c29b573fb3a6350d94bad38648c.bindPopup(popup_dcb06fd8c277ca82585b144176e7ea7c)
-        ;
-
-
-
-
-            marker_bab11c29b573fb3a6350d94bad38648c.bindTooltip(
-                `<div>
-                    El Sosneado
-                 </div>`,
-                {"sticky": true}
-            );
-
-var marker_0d62d8c0c3c703d69bfea353ed8b4a09 = L.marker(
-                [-34.634, -69.184],
-                {}
-            ).addTo(map_c9733e0eae7da2a778369d8d51087285);
-
-
-        var popup_a2b234ef67ebf3c11eab3532ee2c172c = L.popup({"maxWidth": "100%"});
-
-
-
-                var html_16cb3e1e5710aca4620a9b7523071c68 = $(`<div id="html_16cb3e1e5710aca4620a9b7523071c68" style="width: 100.0%; height: 100.0%;">Río Diamante</div>`)[0];
-                popup_a2b234ef67ebf3c11eab3532ee2c172c.setContent(html_16cb3e1e5710aca4620a9b7523071c68);
-
-
-
-        marker_0d62d8c0c3c703d69bfea353ed8b4a09.bindPopup(popup_a2b234ef67ebf3c11eab3532ee2c172c)
-        ;
-
-
-
-
-            marker_0d62d8c0c3c703d69bfea353ed8b4a09.bindTooltip(
-                `<div>
-                     Río Malargüe
-                 </div>`,
-                {"sticky": true}
-            );
-
-
-            var marker_bab11c29b573fb3a6350d94bad38648c = L.marker(
-                [-35.543, -69.597],
-                {}
-            ).addTo(map_c9733e0eae7da2a778369d8d51087285);
-
-
-        var popup_dcb06fd8c277ca82585b144176e7ea7c = L.popup({"maxWidth": "100%"});
-
-       var html_d5e68ba61f5bbd5434f2bbe740ee1b21 = $(`<div id="html_d5e68ba61f5bbd5434f2bbe740ee1b21" style="width: 100.0%; height: 100.0%;">Río Malargüe</div>`)[0];
-                popup_dcb06fd8c277ca82585b144176e7ea7c.setContent(html_d5e68ba61f5bbd5434f2bbe740ee1b21);
-
-
-
-        marker_bab11c29b573fb3a6350d94bad38648c.bindPopup(popup_dcb06fd8c277ca82585b144176e7ea7c)
-
-
-</script>
 </html>
