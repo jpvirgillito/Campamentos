@@ -137,6 +137,23 @@
             </div>
         `, { sticky: true });
 
+
+          // ============================================
+        // Punto 6: Ranquil Norte
+        // ============================================
+        const markerRanquilNorte = L.marker([-36.333, -69.672]).addTo(map);
+
+        markerRanquilNorte.bindPopup(`
+            <div style="width: 100%; height: 100%;">
+                <strong> Noche 12 de abril</strong>
+            </div>
+        `);
+
+        markerRanquilNorte.bindTooltip(`
+            <div>
+                Ranquil Norte
+            </div>
+        `, { sticky: true });
     </script>
 </body>
 </html>
